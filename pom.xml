@@ -18,6 +18,10 @@
   <name>Scala Search</name>
   <packaging>pom</packaging>
 
+  <properties>
+    <scala.plugin.version>3.1.5</scala.plugin.version>
+  </properties>
+
   <modules>
     <module>org.scala.tools.eclipse.search</module>
     <module>org.scala.tools.eclipse.search.tests</module>
@@ -31,4 +35,31 @@
     <connection>scm:git://github.com/scala-ide/scala-search.git</connection>
     <url>https://github.com/scala-ide/scala-search</url>
   </scm>
+
+  <build>
+    <pluginManagement>
+    <plugins>
+      <plugin>
+        <!-- configuration of the scala compiler -->
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>${scala.plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <jvmArgs>
+            <jvmArg>-Xms512m</jvmArg>
+            <jvmArg>-Xmx1024m</jvmArg>
+          </jvmArgs>
+          <displayCmd>true</displayCmd>
+        </configuration>
+      </plugin>
+    </plugins>
+    </pluginManagement>
+  </build>
 </project>
